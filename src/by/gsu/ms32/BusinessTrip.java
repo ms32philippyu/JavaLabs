@@ -1,5 +1,7 @@
 package by.gsu.ms32;
 
+import java.text.NumberFormat;
+
 public class BusinessTrip {
     private static final int allowanceRate = 10000;
     private String account;
@@ -9,9 +11,9 @@ public class BusinessTrip {
     public BusinessTrip() {
     }
 
-    public BusinessTrip(String account, double trasportExp, int numbOfDays) {
+    public BusinessTrip(String account, double transportExp, int numbOfDays) {
         this.account = account;
-        this.transportExp = trasportExp;
+        this.transportExp = transportExp;
         this.numbOfDays = numbOfDays;
     }
 
@@ -48,16 +50,20 @@ public class BusinessTrip {
     }
 
     public void show(){
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(3);
         System.out.println("rate = " + allowanceRate +
                 "\naccount = " + account +
                 "\ntransport expenses = " + transportExp +
                 "\ndays = " + numbOfDays +
-                "\ntotal = " + getTotal());
+                "\ntotal = " + nf.format(getTotal()));
         System.out.println("====================================");
     }
 
     @Override
     public String toString() {
-        return allowanceRate + ";" + account + ";" + transportExp + ";" + numbOfDays + ";" + getTotal();
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(3);
+        return allowanceRate + ";" + account + ";" + transportExp + ";" + numbOfDays + ";" + nf.format(getTotal());
     }
 }

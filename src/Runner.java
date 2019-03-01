@@ -1,8 +1,12 @@
 import by.gsu.ms32.BusinessTrip;
 
+import java.text.NumberFormat;
+
 public class Runner {
     public static void main(String[] args) {
 
+        NumberFormat nf = NumberFormat.getInstance();
+        nf.setMaximumFractionDigits(3);
         double maximumTotalExpenses = 0;
         double sum = 0;
         BusinessTrip[] businessTrips = {new BusinessTrip("Artem", 142.56d,2),
@@ -30,7 +34,7 @@ public class Runner {
                 sum += b.getTotal();
         }
 
-        System.out.println("\nTotal sum = " + sum);
+        System.out.println("\nTotal sum = " + nf.format(sum));
 
         for (BusinessTrip b : businessTrips) {
             if(b != null){
@@ -40,7 +44,7 @@ public class Runner {
 
         }
 
-        System.out.println("\nMaximum total expenses = " + maximumTotalExpenses);
+        System.out.println("\nMaximum total expenses = " + nf.format(maximumTotalExpenses));
 
     }
 }
