@@ -1,6 +1,5 @@
 package by.gsu.ms32;
 
-import java.text.NumberFormat;
 
 public class BusinessTrip {
     private static final int ALLOWANCE_RATE = 10000;
@@ -46,24 +45,20 @@ public class BusinessTrip {
     }
 
     public double getTotal(){
-        return (transportExp + ALLOWANCE_RATE * numbOfDays) / 100;
+        return (transportExp + ALLOWANCE_RATE * numbOfDays);
     }
 
     public void show(){
-        NumberFormat nf = NumberFormat.getInstance();
-        nf.setMaximumFractionDigits(3);
-        System.out.println("rate = " + ALLOWANCE_RATE +
+        System.out.println("rate = " + Byn.toByn(ALLOWANCE_RATE) +
                 "\naccount = " + account +
-                "\ntransport expenses = " + transportExp +
+                "\ntransport expenses = " + Byn.toByn((int) transportExp) +
                 "\ndays = " + numbOfDays +
-                "\ntotal = " + nf.format(getTotal()));
+                "\ntotal = " + Byn.toByn((int) getTotal()));
         System.out.println("====================================");
     }
 
     @Override
     public String toString() {
-        NumberFormat nf = NumberFormat.getInstance();
-        nf.setMaximumFractionDigits(3);
-        return ALLOWANCE_RATE + ";" + account + ";" + transportExp + ";" + numbOfDays + ";" + nf.format(getTotal());
+        return Byn.toByn(ALLOWANCE_RATE) + ";" + account + ";" + Byn.toByn((int) transportExp) + ";" + numbOfDays + ";" + Byn.toByn((int) getTotal());
     }
 }

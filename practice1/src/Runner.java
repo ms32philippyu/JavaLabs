@@ -1,18 +1,17 @@
 import by.gsu.ms32.BusinessTrip;
+import by.gsu.ms32.Byn;
 
-import java.text.NumberFormat;
 
 public class Runner {
     public static void main(String[] args) {
 
-        NumberFormat nf = NumberFormat.getInstance();
-        nf.setMaximumFractionDigits(3);
+        Byn byn = new Byn();
         double maximumTotalExpenses = 0;
         double sum = 0;
-        BusinessTrip[] businessTrips = {new BusinessTrip("Artem", 142.56d,2),
+        BusinessTrip[] businessTrips = {new BusinessTrip("Artem", 14256,2),
                 null,
-                new BusinessTrip("Petr", 156.19d,5),
-                new BusinessTrip("Vlad", 1422.56d,11),
+                new BusinessTrip("Petr", 15619,5),
+                new BusinessTrip("Vlad", 14222,11),
                 new BusinessTrip()};
 
         for (BusinessTrip b : businessTrips) {
@@ -20,7 +19,7 @@ public class Runner {
                 b.show();
         }
 
-        businessTrips[businessTrips.length - 1].setTrasportExp(555.55d);
+        businessTrips[businessTrips.length - 1].setTrasportExp(55555);
         int duration = businessTrips[0].getNumbOfDays() + businessTrips[2].getNumbOfDays();
         System.out.println("\nDuration = " + duration);
         System.out.print("\n");
@@ -34,7 +33,7 @@ public class Runner {
                 sum += b.getTotal();
         }
 
-        System.out.println("\nTotal sum = " + nf.format(sum));
+        System.out.println("\nTotal sum = " + byn.toByn((int) sum));
 
         for (BusinessTrip b : businessTrips) {
             if(b != null){
@@ -44,7 +43,7 @@ public class Runner {
 
         }
 
-        System.out.println("\nMaximum total expenses = " + nf.format(maximumTotalExpenses));
+        System.out.println("\nMaximum total expenses = " + byn.toByn((int) maximumTotalExpenses));
 
     }
 }
