@@ -1,6 +1,6 @@
 package by.gsu.ms32;
 
-public class Butter {
+public class Butter implements Comparable<Butter> {
 
     private String name;
     private boolean availabilityOfHerbalSupplements;
@@ -42,6 +42,12 @@ public class Butter {
 
     @Override
     public String toString() {
-        return name + ";" + availabilityOfHerbalSupplements + ";" + price / 100;
+        return name + ";" + availabilityOfHerbalSupplements + ";" + Byn.toByn((int) price);
     }
+
+    @Override
+    public int compareTo(Butter b) {
+        return (int) (this.price - b.price);
+    }
+
 }

@@ -1,17 +1,19 @@
 import by.gsu.ms32.Butter;
+import by.gsu.ms32.Byn;
 
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class Runner {
 
-    private static double getTotalCost(Butter[] butter){
+    private static String getTotalCost(Butter[] butter){
+        Byn byn = new Byn();
         double total = 0;
         for (Butter aButter : butter) {
             total += aButter.getPrice();
         }
 
-        return total / 100;
+        return byn.toByn((int) total);
     }
 
     private static int getNumberWithHerbSuppl(Butter[] butter){
@@ -58,18 +60,7 @@ public class Runner {
             System.out.println(butter);
         }
 
-        Arrays.sort(butters, new Comparator<Butter>() {
-            public int compare(Butter o1, Butter o2) {
-                double priceCompare = o1.getPrice() - o2.getPrice();
-                if(priceCompare > 0.0) {
-                    return 1;
-                }else if (priceCompare < 0.0){
-                    return -1;
-                }else{
-                    return 0;
-                }
-            }
-        });
+        Arrays.sort(butters);
 
         System.out.println("\n===========Array, sorted by price=============");
         for (Butter butter : butters) {
