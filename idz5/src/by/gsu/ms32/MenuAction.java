@@ -38,8 +38,6 @@ public class MenuAction {
             }
         }catch (InputMismatchException e){
             System.out.println(e + " - Данные введены некорректно");
-        }catch (OutOfMemoryError o){
-            System.out.println(o + " - Недостаточно памяти");
         }
     }
 
@@ -63,27 +61,20 @@ public class MenuAction {
 
     public void totalSquare(){
         double totalSquare = 0;
-        try {
-            for(City city : cities){
-                totalSquare += city.getSquare();
-            }
-        }catch (ArithmeticException e){
-            System.out.println(e + "Ошибка вычислений!");
-        }
 
+        for(City city : cities) {
+            totalSquare += city.getSquare();
+        }
         System.out.println("Общая площадь городов = " + totalSquare);
     }
 
     public void countOfMilCity(){
         int count = 0;
-        try {
-            for (City city : cities){
-                if(city.getPopulation() >= 1000000){
-                    count++;
-                }
+
+        for (City city : cities) {
+            if (city.getPopulation() >= 1000000) {
+                count++;
             }
-        }catch (ArithmeticException e){
-            System.out.println(e + "Ошибка вычислений!");
         }
 
         System.out.println("Количество городов-миллионеров = " + count);
